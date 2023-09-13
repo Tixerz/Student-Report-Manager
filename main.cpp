@@ -2,21 +2,23 @@
 #include <string>
 #include <fstream>
 #include <map>
-
+#include <vector>
 using namespace std;
+//global score
 
+void search();
 class Student{
     public:
         string name;
         int roll_number;
         map<string , int> lesson_grade;
         void create_student();
-        void search();
+
         void calculate_grade();
 
 
 };
-
+vector<Student> list1 ;
 void show_menu(){
     system("cls");
     cout << "------MENU------" << endl << endl ;
@@ -36,8 +38,7 @@ void show_menu(){
         a.create_student();
     }
     if(option == 2) {
-        Student a;
-        a.search() ;
+        search();
     }
 }
 void Student::create_student(){
@@ -61,16 +62,27 @@ void Student::create_student(){
     file.close();
     
 }
-void Student::search(){
+void search(){
     cout <<endl << "Enter roll number: " ; 
     string number ;
     cin >> number ; 
     ifstream file(number+".txt");
     string item; 
+    int counter =0;
     while(file >> item ){
-        cout << item ;
+        counter +=1 ; 
+        if(counter==1){
+            cout << "roll number: " << item <<endl; 
+        }else if(counter ==2){
+            cout << "name: " << item << endl ;
+        }else if(counter == 3){
+            cout << "math grade: " << item << endl;
+        }else if(counter == 4){
+            cout << "chemestry grade: " << item << endl;
+        }
     }
-    cin >> item ; 
+    string temp;
+    cin >> temp ; 
 }
 int main(){
     while (true){
