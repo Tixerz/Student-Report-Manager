@@ -61,7 +61,8 @@ void Student::search(){
 
 }
 int main(){
-
-    show_menu();
+    while (true){
+        show_menu();
+    }
 
 }
