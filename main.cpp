@@ -16,6 +16,7 @@ class Student{
 
 
 };
+
 void show_menu(){
     system("cls");
     cout << "------MENU------" << endl << endl ;
@@ -33,6 +34,10 @@ void show_menu(){
     if(option == 1){
         Student a;
         a.create_student();
+    }
+    if(option == 2) {
+        Student a;
+        a.search() ;
     }
 }
 void Student::create_student(){
@@ -57,8 +62,15 @@ void Student::create_student(){
     
 }
 void Student::search(){
-    cout << "Enter roll number: " ; 
-
+    cout <<endl << "Enter roll number: " ; 
+    string number ;
+    cin >> number ; 
+    ifstream file(number+".txt");
+    string item; 
+    while(file >> item ){
+        cout << item ;
+    }
+    cin >> item ; 
 }
 int main(){
     while (true){
